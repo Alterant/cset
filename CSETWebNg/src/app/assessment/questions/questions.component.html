@@ -36,8 +36,7 @@
 
     <div class="d-flex flex-column align-items-start flex-00a">
       <div class="d-flex align-items-start flex-11a">
-        <button class="btn btn-primary m-0 questions-header-collapse-button-radius" (click)="expandAll(false)">Collapse
-          All</button>
+        <button class="btn btn-primary m-0 questions-header-collapse-button-radius" (click)="expandAll(false)">Collapse All</button>
         <button class="btn btn-primary m-0 br-0" (click)="expandAll(true)">Expand All</button>
         <button class="btn btn-primary m-0 questions-header-filter-button-radius" (click)="showFilterDialog()">
           <i class="cset-icons-filter"></i>
@@ -127,8 +126,9 @@
     class="alert-warning mt-4 mb-4 d-flex flex-row justify-content-center align-items-center flex-11a">
     <span class="p-md-3 p-2 fs-large cset-icons-exclamation-triangle"></span>
     <span class="fs-base-3 p-2 d-flex flex-column justify-content-center flex-11a">
-      There are no applicable questions/requirements to display. Check the assessment's SAL level and Standards
-      selection.
+      There are no applicable questions to display.
+      <br>
+      You may change to the "Requirements Mode" to view your requirements directly, or choose different standards.
     </span>
   </div>
 

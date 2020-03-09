@@ -46,6 +46,8 @@ export class QuestionsComponent implements AfterViewInit {
 
   setHasRequirements = false;
 
+  setHasQuestions = false;
+
   autoLoadSupplementalInfo: boolean;
 
   filterDialogRef: MatDialogRef<QuestionFiltersComponent>;
@@ -67,7 +69,8 @@ export class QuestionsComponent implements AfterViewInit {
     private stdSvc: StandardService,
     public navSvc2: Navigation2Service,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+  
   ) {
     const magic = this.navSvc.getMagic();
     this.navSvc.setTree([
@@ -121,8 +124,7 @@ export class QuestionsComponent implements AfterViewInit {
     if (this.domains != null && this.domains.length <= 0) {
       this.loadQuestions();
     }
-
-    this.assessSvc.currentTab = 'questions';
+      this.assessSvc.currentTab = 'questions';
   }
 
   /**
@@ -163,8 +165,12 @@ export class QuestionsComponent implements AfterViewInit {
     this.domains = null;
     this.questionsSvc.getQuestionsList().subscribe(
       (data: QuestionResponse) => {
-        this.assessSvc.applicationMode = data.ApplicationMode;
         this.setHasRequirements = (data.RequirementCount > 0);
+        this.setHasQuestions = (data.QuestionCount > 0);
+        this.assessSvc.applicationMode = data.ApplicationMode;
+        
+        console.log("Questions: " + this.setHasQuestions);
+        console.log("Requirements: " + this.setHasRequirements);
 
         this.questionsSvc.questions = data;
 
